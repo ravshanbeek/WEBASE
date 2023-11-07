@@ -57,11 +57,6 @@ public partial class PostgresContext : DbContext
                 .HasMaxLength(15)
                 .HasColumnName("phonenumber");
             entity.Property(e => e.Profissionid).HasColumnName("profissionid");
-
-            entity.HasOne(d => d.Profission).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.Profissionid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("employee_profissionid_fkey");
         });
 
         modelBuilder.Entity<Organization>(entity =>
@@ -126,16 +121,6 @@ public partial class PostgresContext : DbContext
                 .HasForeignKey(d => d.Organizationid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("project_organizationid_fkey");
-
-            entity.HasOne(d => d.Priority).WithMany(p => p.Projects)
-                .HasForeignKey(d => d.Priorityid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("project_priorityid_fkey");
-
-            entity.HasOne(d => d.Type).WithMany(p => p.Projects)
-                .HasForeignKey(d => d.Typeid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("project_typeid_fkey");
         });
 
         modelBuilder.Entity<ProjectType>(entity =>
@@ -170,29 +155,6 @@ public partial class PostgresContext : DbContext
                 .HasForeignKey(d => d.Projectid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("task_projectid_fkey");
-
-            entity.HasOne(d => d.Status).WithMany(p => p.Tasks)
-                .HasForeignKey(d => d.Statusid)
-                .HasConstraintName("task_statusid_fkey");
-
-            entity.HasMany(d => d.Employees).WithMany(p => p.Tasks)
-                .UsingEntity<Dictionary<string, object>>(
-                    "Taskemployee",
-                    r => r.HasOne<Employee>().WithMany()
-                        .HasForeignKey("Employeeid")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("taskemployee_employeeid_fkey"),
-                    l => l.HasOne<Task>().WithMany()
-                        .HasForeignKey("Taskid")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("taskemployee_taskid_fkey"),
-                    j =>
-                    {
-                        j.HasKey("Taskid", "Employeeid").HasName("taskemployee_pkey");
-                        j.ToTable("taskemployee");
-                        j.IndexerProperty<int>("Taskid").HasColumnName("taskid");
-                        j.IndexerProperty<int>("Employeeid").HasColumnName("employeeid");
-                    });
         });
 
         modelBuilder.Entity<TaskStatus>(entity =>

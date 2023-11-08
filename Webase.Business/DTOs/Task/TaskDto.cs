@@ -7,5 +7,5 @@ public record TaskDto(
     DateOnly startDate,
     DateOnly endDate,
     DateOnly completionDate,
-    TaskStatusDto status,
-    ICollection<EmployeeDto> employees);
+    string TaskStatus,
+    List<string> employees);

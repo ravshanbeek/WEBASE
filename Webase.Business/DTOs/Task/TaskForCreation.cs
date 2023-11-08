@@ -5,4 +5,4 @@ public record TaskForCreation(
     string name,
     DateOnly startDate,
     DateOnly endDate,
-    DateOnly completionDate);
+    List<int> employeeIds);

@@ -5,5 +5,5 @@ public record ProjectDto(
     int organizationid,
     string name,
     DateTime deadline,
-    ProjectTypeDto type,
-    PriorityStatusDto priority);
+    string projectType,
+    string projectPriority);

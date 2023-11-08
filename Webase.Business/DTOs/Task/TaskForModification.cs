@@ -6,5 +6,6 @@ public record TaskForModification(
     string name,
     DateOnly startDate,
     DateOnly endDate,
-    TaskStatusDto status,
-    ICollection<EmployeeDto> employees);
+    DateOnly completionDate,
+    int statusId,
+    List<int> employeeIds);

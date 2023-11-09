@@ -9,7 +9,7 @@ public partial class Organization
 
     public string Inn { get; set; } = null!;
 
-    public string Name { get; set; } = null!;
+    public string ShortName { get; set; } = null!;
 
     public int Okedid { get; set; }
 

@@ -28,6 +28,34 @@ public class EmployeeController : ControllerBase
         var createdEmployee = await employeeServices.CreateAsync(employee);
         return Created("", createdEmployee);
     }
+
+    [HttpGet]
+    public async ValueTask<ActionResult<EmployeeDto>> RetrieveEmployees()
+    {
+        var employees = employeeServices.RetrieveAll();
+        return Ok(employees);
+    }
     
+    [HttpGet("id")]
+    public async ValueTask<ActionResult<EmployeeDto>> RetrieveEmployeeBtId(int id)
+    {
+        var employees = await employeeServices.RetrieveByIdAsync(id);
+        return Ok(employees);
+    }
+
+    [HttpPut]
+    public async ValueTask<ActionResult<EmployeeDto>> UpdateEmployeeAsync(EmployeeForModification employee)
+    {
+        var modifiedEmployee = await employeeServices.ModifyAsync(employee);
+
+        return Ok(modifiedEmployee);
+    }
+
+    [HttpDelete]
+    public async ValueTask<ActionResult<EmployeeDto>> DeleteEmployeeAsync(int id)
+    {
+        var removedEmployee = await employeeServices.RemoveByIdAsync(id);
+        return Ok(removedEmployee);
+    }
 }
 

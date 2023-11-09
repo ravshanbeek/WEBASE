@@ -17,7 +17,7 @@ public partial class Employee
 
     public int Profissionid { get; set; }
 
-    public virtual Profission? Profission { get; set; }
+    public Profission? Profission { get; set; }
     
     public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
 }

@@ -51,9 +51,10 @@ public abstract class GenericServices<TId,TEntity,TDto,TCreateDto,TModifyDto,TRe
         return mapper.Map<TDto>(storedEntity);
     }
 
-    public async void RemoveById(TId id)
+    public async ValueTask<TDto> RemoveByIdAsync(TId id)
     {
-        var entity = mapper.Map<TEntity>(await this.RetrieveByIdAsync(id));
-        await Repository.DeleteAsync(entity);
+        var entity = await Repository.SelectByIdAsync(id);
+        var deletedEntity = await Repository.DeleteAsync(entity);
+        return mapper.Map<TDto>(deletedEntity);
     }
 }

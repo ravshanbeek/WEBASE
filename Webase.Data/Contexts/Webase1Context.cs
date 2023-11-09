@@ -68,7 +68,7 @@ public partial class PostgresContext : DbContext
             entity.Property(e => e.Inn)
                 .HasMaxLength(20)
                 .HasColumnName("inn");
-            entity.Property(e => e.Name)
+            entity.Property(e => e.ShortName)
                 .HasMaxLength(255)
                 .HasColumnName("name");
             entity.Property(e => e.Okedid).HasColumnName("okedid");

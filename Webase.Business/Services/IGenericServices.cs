@@ -9,5 +9,5 @@ public interface IGenericServices<TId,TEntity,TDto,TCreateDto,TModifyDto,TReposi
     IQueryable<TDto> RetrieveAll();
     ValueTask<TDto> RetrieveByIdAsync(TId id);
     ValueTask<TDto> ModifyAsync(TModifyDto model);
-    void RemoveById(TId id);
+    ValueTask<TDto> RemoveByIdAsync(TId id);
 }

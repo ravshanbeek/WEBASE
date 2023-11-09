@@ -1,3 +1,6 @@
 namespace Webase.Business.DTOs;
 
-public record ProjectTypeForCreation(string typeName);
+public class ProjectTypeForCreation
+{
+    public string TypeName { get; set; }
+}

@@ -1,8 +1,10 @@
 namespace Webase.Business.DTOs;
 
-public record ProjectForCreation(
-    int organizationid,
-    string name,
-    DateTime deadline,
-    int projectType,
-    int projectPriority);
+public class ProjectForCreation
+{
+    public int OrganizationId { get; set; }
+    public string Name { get; set; }
+    public DateTime Deadline { get; set; }
+    public int ProjectType { get; set; }
+    public int ProjectPriority { get; set; }
+}

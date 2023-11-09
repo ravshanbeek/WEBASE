@@ -1,9 +1,11 @@
 namespace Webase.Business.DTOs;
 
-public record OrganizationDto(
-    string inn,
-    string name,
-    int okedid,
-    string address, 
-    string? accounter,
-    string director );
+public class OrganizationDto
+{
+    public string Inn { get; init; }
+    public string Name { get; init; }
+    public int OkedId { get; init; }
+    public string Address { get; init; }
+    public string? Accounter { get; init; }
+    public string Director { get; init; }
+}

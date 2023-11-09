@@ -1,3 +1,7 @@
 namespace Webase.Business.DTOs;
 
-public record ProjectTypeDto(int id, string typeName);
+public class ProjectTypeDto
+{
+    public int Id { get; init; }
+    public string TypeName { get; init; }
+}

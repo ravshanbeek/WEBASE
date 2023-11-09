@@ -21,7 +21,7 @@ public abstract class GenericServices<TId,TEntity,TDto,TCreateDto,TModifyDto,TRe
     {
         _serviceProvider = ServiceProvider;
         this.mapper = mapper;
-        Repository = ServiceProvider.GetRequiredService<TRepository>();
+        Repository = _serviceProvider.GetRequiredService<TRepository>();
     }
 
     public async virtual ValueTask<TDto> CreateAsync(TCreateDto tmodel)
@@ -33,9 +33,9 @@ public abstract class GenericServices<TId,TEntity,TDto,TCreateDto,TModifyDto,TRe
 
     public virtual IQueryable<TDto> RetrieveAll()
     {
-        var entities = Repository.SelectAll();
-        var dtos = entities.Select(e => mapper.Map<TDto>(e));
-        return dtos;
+        var entities = Repository.SelectAll().ToList();
+        var dtos = entities.Select(e => mapper.Map<TDto>(e)).ToList();
+        return dtos.AsQueryable();
     }
 
     public async virtual ValueTask<TDto> RetrieveByIdAsync(TId id)

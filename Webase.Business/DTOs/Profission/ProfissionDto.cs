@@ -1,3 +1,7 @@
 namespace Webase.Business.DTOs.Profission;
 
-public record ProfissionDto(int id, string name);
+public class ProfissionDto
+{
+    public int Id { get; init; }
+    public string Name { get; init; }
+}

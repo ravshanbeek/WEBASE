@@ -1,8 +1,14 @@
-namespace Webase.Business.DTOs.Task;
+using System;
+using System.Collections.Generic;
 
-public record TaskForCreation(
-    int projectId,
-    string name,
-    DateOnly startDate,
-    DateOnly endDate,
-    List<int> employeeIds);
+namespace Webase.Business.DTOs.Task
+{
+    public class TaskForCreation
+    {
+        public int ProjectId { get; set; }
+        public string Name { get; set; }
+        public DateOnly StartDate { get; set; }
+        public DateOnly EndDate { get; set; }
+        public List<int> EmployeeIds { get; set; }
+    }
+}

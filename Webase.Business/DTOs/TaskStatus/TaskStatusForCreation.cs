@@ -1,3 +1,6 @@
 namespace Webase.Business.DTOs;
 
-public record TaskStatusForCreation(int statusName);
+public class TaskStatusForCreation
+{
+    public string StatusName { get; set; }
+}

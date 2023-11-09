@@ -1,10 +1,10 @@
-using Webase.Business.DTOs.Profission;
-
 namespace Webase.Business.DTOs;
 
-public record EmployeeForCreation(
-    string firstname,
-    string lastName,
-    string? telephoneNumber,
-    string? email,
-    int profissionId);
+public class EmployeeForCreation
+{
+    public string Firstname { get; set; }
+    public string LastName { get; set; }
+    public string? TelephoneNumber { get; set; }
+    public string? Email { get; set; }
+    public int ProfissionId { get; set; }
+}

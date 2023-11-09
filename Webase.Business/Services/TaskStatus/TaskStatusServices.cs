@@ -16,7 +16,25 @@ public class TaskStatusServices
         ITaskStatusRepository>,
         ITaskStatusServices
 {
+    private IMapper mapper;
     public TaskStatusServices(IMapper mapper,IServiceProvider provider) : base(mapper,provider)
     {
+        this.mapper = mapper;
     }
+    
+    public List<TaskStatusDto> RetrieveAll1()
+    {
+        var entities = Repository.SelectAll().ToList();
+        var dtos = entities.Select(e => mapper.Map<TaskStatusDto>(e)).ToList();
+        
+        return dtos;
+    }
+    public TaskStatusDto RetrieveAll12(int id)
+    {
+        var entities = Repository.SelectByIdAsync(id);
+        var dtos = mapper.Map<TaskStatusDto>(entities);
+        
+        return dtos;
+    }
+
 }

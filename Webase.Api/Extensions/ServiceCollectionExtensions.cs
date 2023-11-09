@@ -51,12 +51,13 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IProjectTypeServices, ProjectTypeServices>();
         services.AddScoped<ITaskServices, TaskServices>();
         services.AddScoped<ITaskStatusServices, TaskStatusServices>();
-        
-        
-            
+
+        // Inside ConfigureServices method in Startup.cs
+        services.AddAutoMapper(typeof(AutoMapperProfiler));
+
         return services;
     }    
     
-
+    
 
 }

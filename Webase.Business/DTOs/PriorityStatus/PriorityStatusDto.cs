@@ -1,3 +1,7 @@
 namespace Webase.Business.DTOs;
 
-public record PriorityStatusDto(int id, string statusName);
+public class PriorityStatusDto
+{
+    public int Id { get; init; }
+    public string StatusName { get; init; }
+}

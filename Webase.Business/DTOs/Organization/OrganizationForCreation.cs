@@ -1,3 +1,6 @@
 namespace Webase.Business.DTOs;
 
-public record OrganizationForCreation(string inn);
+public class OrganizationForCreation
+{
+    public string Inn { get; set; }
+}

@@ -17,4 +17,12 @@ public class EmployeeServices
     public EmployeeServices(IMapper mapper,IServiceProvider provider) : base(mapper,provider)
     {
     }
+    
+    public async ValueTask<Employee> CreateAsync1(Employee tmodel)
+    {
+        // var entity = mapper.Map<TEntity>(tmodel);
+        var result = await Repository.InsertAsync(tmodel);
+        // return mapper.Map<TDto>(result);
+        return result;
+    }
 }

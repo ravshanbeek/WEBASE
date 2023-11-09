@@ -13,5 +13,4 @@ public interface IEmployeeServices
         EmployeeForModification,
         EmployeeRepository>
 {
-    ValueTask<Employee> CreateAsync1(Employee tmodel);
 }

@@ -29,11 +29,5 @@ public class EmployeeController : ControllerBase
         return Created("", createdEmployee);
     }
     
-    [HttpPost]
-    public async ValueTask<ActionResult<EmployeeDto>> CreateEmployeeAsync(Employee employee)
-    {
-        var createdEmployee = await employeeServices.CreateAsync1(employee);
-        return Created("", createdEmployee);
-    }
 }
 

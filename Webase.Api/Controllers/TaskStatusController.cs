@@ -24,19 +24,5 @@ namespace Webase.Api.Controllers
             var taskStatuses =  taskServices.RetrieveAll().ToList();
             return Ok(taskStatuses);
         }
-        
-        [HttpGet]
-        public IActionResult GetAll1()
-        {
-            var taskStatuses =  taskServices.RetrieveAll1();
-            return Ok(taskStatuses);
-        }
-        
-        [HttpGet("id")]
-        public IActionResult GetAll12(int id)
-        {
-            var taskStatuses =  taskServices.RetrieveAll12(id);
-            return Ok(taskStatuses);
-        }
     }
 }

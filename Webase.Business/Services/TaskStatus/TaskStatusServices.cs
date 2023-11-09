@@ -21,20 +21,4 @@ public class TaskStatusServices
     {
         this.mapper = mapper;
     }
-    
-    public List<TaskStatusDto> RetrieveAll1()
-    {
-        var entities = Repository.SelectAll().ToList();
-        var dtos = entities.Select(e => mapper.Map<TaskStatusDto>(e)).ToList();
-        
-        return dtos;
-    }
-    public TaskStatusDto RetrieveAll12(int id)
-    {
-        var entities = Repository.SelectByIdAsync(id);
-        var dtos = mapper.Map<TaskStatusDto>(entities);
-        
-        return dtos;
-    }
-
 }

@@ -10,7 +10,7 @@ public interface IProjectServices
         Project,
         ProjectDto,
         ProjectForCreation,
-        ProjectDto,
+        ProjectForModification,
         ProjectRepository>
 {
     

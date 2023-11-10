@@ -52,6 +52,10 @@ public partial class PostgresContext : DbContext
             entity.Property(e => e.Phonenumber)
                 .HasMaxLength(15)
                 .HasColumnName("phonenumber");
+            entity.HasMany(e => e.Tasks)
+                .WithMany(t => t.Employees)
+                .UsingEntity(j => j.ToTable("taskemployee"));
+
             entity.Property(e => e.Profissionid).HasColumnName("profissionid");
         });
 
@@ -151,6 +155,11 @@ public partial class PostgresContext : DbContext
                 .HasForeignKey(d => d.Projectid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("task_projectid_fkey");
+            
+            entity.HasMany(t => t.Employees)
+                .WithMany(e => e.Tasks)
+                .UsingEntity(j => j.ToTable("taskemployee"));
+
         });
 
         modelBuilder.Entity<TaskStatus>(entity =>

@@ -9,7 +9,7 @@ public class ProjectTypeServices
     :GenericServices<
         int,
         ProjectType,
-        ProjectDto,
+        ProjectTypeDto,
         ProjectTypeForCreation,
         ProjectTypeDto,
         IProjectTypeRepository>,

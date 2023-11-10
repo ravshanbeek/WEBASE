@@ -12,7 +12,7 @@ using Task = Webase.Data.Task;
 
 namespace Webase.Api.Controllers;
 
-[Route("[action]/employees")]
+[Route("employees/[action]")]
 [ApiController]
 public class EmployeeController : ControllerBase
 {
@@ -26,7 +26,7 @@ public class EmployeeController : ControllerBase
     public async ValueTask<ActionResult<EmployeeDto>> PostEmployeeAsync(EmployeeForCreation employee)
     {
         var createdEmployee = await employeeServices.CreateAsync(employee);
-        return Created("", createdEmployee);
+        return Created("",createdEmployee);
     }
 
     [HttpGet]

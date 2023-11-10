@@ -10,7 +10,7 @@ using Webase.Business.Services;
 
 namespace Webase.Api.Controllers
 {
-    [Route("[action]/organization")]
+    [Route("organization/[action]")]
     [ApiController]
     public class OrganizationController : ControllerBase
     {
@@ -27,7 +27,26 @@ namespace Webase.Api.Controllers
             var addedOrganization = await organizationServices.CreateAsync(organization);
             return Ok(addedOrganization);
         }
-        
 
+        [HttpGet]
+        public async ValueTask<ActionResult<OrganizationDto>> RetrieveOrganizations()
+        {
+            var organizations = organizationServices.RetrieveAll();
+            return Ok(organizations);
+        }
+
+        [HttpGet("id:int")]
+        public async ValueTask<ActionResult<OrganizationDto>> RetrieveOrganizationById(int id)
+        {
+            var organization = await organizationServices.RetrieveByIdAsync(id);
+            return Ok(organization);
+        }
+
+        [HttpDelete]
+        public async ValueTask<ActionResult<OrganizationDto>> DeleteOrganizationById(int id)
+        {
+            var deletedOrganization = await organizationServices.RemoveByIdAsync(id);
+            return Ok(deletedOrganization);
+        }
     }
 }

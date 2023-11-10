@@ -8,7 +8,7 @@ public interface IProjectTypeServices
     :IGenericServices<
         int,
         ProjectType,
-        ProjectDto,
+        ProjectTypeDto,
         ProjectTypeForCreation,
         ProjectTypeDto,
         ProjectTypeRepository>

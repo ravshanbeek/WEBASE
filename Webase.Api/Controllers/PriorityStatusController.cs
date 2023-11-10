@@ -9,17 +9,16 @@ using Webase.Business.Services;
 
 namespace Webase.Api.Controllers
 {
-    [Route("taskStatus/[action]")]
+    [Route("priorityStatus/[action]")]
     [ApiController]
-    public class TaskStatusController : ControllerBase
+    public class PriorityStatusController : ControllerBase
     {
-        private readonly ITaskStatusServices services;
+        private IPriorityStatusServices services;
 
-        public TaskStatusController(ITaskStatusServices taskServices)
+        public PriorityStatusController(IPriorityStatusServices services)
         {
-            this.services = taskServices;
+            this.services = services;
         }
-        
         [HttpGet]
         public async ValueTask<ActionResult> GetAll()
         {
@@ -28,7 +27,7 @@ namespace Webase.Api.Controllers
         }
 
         [HttpPost]
-        public async ValueTask<ActionResult> Post(TaskStatusForCreation status)
+        public async ValueTask<ActionResult> Post(PriorityStatusForCreation status)
         {
             var createdStatus = await services.CreateAsync(status);
             return Created("", createdStatus);

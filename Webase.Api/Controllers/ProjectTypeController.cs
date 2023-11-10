@@ -9,26 +9,26 @@ using Webase.Business.Services;
 
 namespace Webase.Api.Controllers
 {
-    [Route("taskStatus/[action]")]
+    [Route("projectType/[action]")]
     [ApiController]
-    public class TaskStatusController : ControllerBase
+    public class ProjectTypeController : ControllerBase
     {
-        private readonly ITaskStatusServices services;
+        private IProjectTypeServices services;
 
-        public TaskStatusController(ITaskStatusServices taskServices)
+        public ProjectTypeController(IProjectTypeServices services)
         {
-            this.services = taskServices;
+            this.services = services;
         }
         
         [HttpGet]
         public async ValueTask<ActionResult> GetAll()
         {
-            var taskStatuses =  services.RetrieveAll().ToList();
-            return Ok(taskStatuses);
+            var projectTypes =  services.RetrieveAll().ToList();
+            return Ok(projectTypes);
         }
 
         [HttpPost]
-        public async ValueTask<ActionResult> Post(TaskStatusForCreation status)
+        public async ValueTask<ActionResult> Post(ProjectTypeForCreation status)
         {
             var createdStatus = await services.CreateAsync(status);
             return Created("", createdStatus);
